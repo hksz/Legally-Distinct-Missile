@@ -15,6 +15,11 @@ namespace Rocket.Core.Permissions
         {
             this.permissions = permissions;
         }
+        
+        public List<RocketPermissionsGroup> GetAllGroup()
+        {
+            return this.permissions.Instance.Groups;
+        }
 
         public List<RocketPermissionsGroup> GetGroupsByIds(List<string> ids) => this.permissions.Instance.Groups.OrderBy(x => x.Priority)
             .Where(g => ids.Select(i => i.ToLower()).Contains(g.Id.ToLower())).ToList();
